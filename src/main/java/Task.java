@@ -16,11 +16,8 @@ public class Task {
         this.isDone = false;
     }
 
-    public String getName(){
-        return name;
-    }
-
     public String getStatus(){
         return isDone ? "[X]" : "[ ]";
     }
+
 }

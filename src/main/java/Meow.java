@@ -4,21 +4,19 @@ public class Meow {
 
     public static void printAll(Task[] tasks, int counter){
         for (int i = 0; i < counter; i++) {
-            System.out.println(tasks[i].getStatus() + " " + (i + 1) + ": " + tasks[i].name);
+            System.out.println((i + 1) + ". " + tasks[i].getStatus());
         }
     }
 
 
-
     public static void main(String[] args) {
-
-
 
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
         Task[] tasks = new Task[100]; //Create fixed sized array of 100 to store items
         int counter = 0;
         char last;
         int num;
+        String name;
         String greet = "Hello! I am Meow. ᓚᘏᗢ\n"
                      + "What can I do for you?\n";
         String ask = "Enter any input for me to record down\n"
@@ -37,6 +35,7 @@ public class Meow {
             last = userInput.charAt(userInput.length() - 1);
             num = last - '0';
 
+
             if (userInput.equals("list")) {
                 printAll(tasks,counter);
             }else if(userInput.contains("unmark")) {
@@ -45,8 +44,31 @@ public class Meow {
             }else if(userInput.contains("mark")){
                 tasks[num - 1].setDone();
                 printAll(tasks,counter);
-            }
-            else{
+            }else if(userInput.contains("todo")) {
+                name = userInput.substring(5);
+                Todo todo = new Todo(name);
+                tasks[counter] = todo;
+                counter += 1;
+                printAll(tasks, counter);
+            }else if(userInput.contains("deadline")) {
+                int index = userInput.indexOf('/');
+                name = userInput.substring(9, index);
+                String endDate = userInput.substring(index + 1);
+                Deadline deadline = new Deadline(name, endDate);
+                tasks[counter] = deadline;
+                counter += 1;
+                printAll(tasks, counter);
+            } else if(userInput.contains("event")){
+                int index = userInput.indexOf('/');
+                int lastIndex = userInput.lastIndexOf('/');
+                name =  userInput.substring(5,index);
+                String startDate = userInput.substring(index + 1,lastIndex);
+                String endDate = userInput.substring(lastIndex + 1);
+                Event event = new Event(name,startDate,endDate);
+                tasks[counter] = event;
+                counter += 1;
+                printAll(tasks,counter);
+            }else{
                 System.out.println("Recorded: " + userInput);
                 Task task = new Task(userInput);
                 tasks[counter] = task;
