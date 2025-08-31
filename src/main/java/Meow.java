@@ -32,48 +32,60 @@ public class Meow {
 
         while(!userInput.equals("bye")){
 
-            last = userInput.charAt(userInput.length() - 1);
-            num = last - '0';
+
+            try {
+                DukeException.checkEmptyInput(userInput);
+                System.out.println("You entered: " + userInput);
+
+                last = userInput.charAt(userInput.length() - 1);
+                num = last - '0';
 
 
-            if (userInput.equals("list")) {
-                printAll(tasks,counter);
-            }else if(userInput.contains("unmark")) {
-                tasks[num - 1].setUnDone();
-                printAll(tasks,counter);
-            }else if(userInput.contains("mark")){
-                tasks[num - 1].setDone();
-                printAll(tasks,counter);
-            }else if(userInput.contains("todo")) {
-                name = userInput.substring(5);
-                Todo todo = new Todo(name);
-                tasks[counter] = todo;
-                counter += 1;
-                printAll(tasks, counter);
-            }else if(userInput.contains("deadline")) {
-                int index = userInput.indexOf('/');
-                name = userInput.substring(9, index);
-                String endDate = userInput.substring(index + 1);
-                Deadline deadline = new Deadline(name, endDate);
-                tasks[counter] = deadline;
-                counter += 1;
-                printAll(tasks, counter);
-            } else if(userInput.contains("event")){
-                int index = userInput.indexOf('/');
-                int lastIndex = userInput.lastIndexOf('/');
-                name =  userInput.substring(5,index);
-                String startDate = userInput.substring(index + 1,lastIndex);
-                String endDate = userInput.substring(lastIndex + 1);
-                Event event = new Event(name,startDate,endDate);
-                tasks[counter] = event;
-                counter += 1;
-                printAll(tasks,counter);
-            }else{
-                System.out.println("Recorded: " + userInput);
-                Task task = new Task(userInput);
-                tasks[counter] = task;
-                counter += 1;
+                if (userInput.equals("list")) {
+                    printAll(tasks,counter);
+                }else if(userInput.contains("unmark")) {
+                    tasks[num - 1].setUnDone();
+                    printAll(tasks,counter);
+                }else if(userInput.contains("mark")){
+                    tasks[num - 1].setDone();
+                    printAll(tasks,counter);
+                }else if(userInput.contains("todo")) {
+                    name = userInput.substring(5);
+                    Todo todo = new Todo(name);
+                    tasks[counter] = todo;
+                    counter += 1;
+                    printAll(tasks, counter);
+                }else if(userInput.contains("deadline")) {
+                    int index = userInput.indexOf('/');
+                    name = userInput.substring(9, index);
+                    String endDate = userInput.substring(index + 1);
+                    Deadline deadline = new Deadline(name, endDate);
+                    tasks[counter] = deadline;
+                    counter += 1;
+                    printAll(tasks, counter);
+                } else if(userInput.contains("event")){
+                    int index = userInput.indexOf('/');
+                    int lastIndex = userInput.lastIndexOf('/');
+                    name =  userInput.substring(5,index);
+                    String startDate = userInput.substring(index + 1,lastIndex);
+                    String endDate = userInput.substring(lastIndex + 1);
+                    Event event = new Event(name,startDate,endDate);
+                    tasks[counter] = event;
+                    counter += 1;
+                    printAll(tasks,counter);
+                }else{
+                    System.out.println("Recorded: " + userInput);
+                    Task task = new Task(userInput);
+                    tasks[counter] = task;
+                    counter += 1;
+                }
+
+
+            } catch (DukeException e) {
+                System.out.println("OOPS! " + e.getMessage());
             }
+
+
 
 
             System.out.println();
