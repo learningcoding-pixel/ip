@@ -17,12 +17,12 @@ public class Meow {
         char last;
         int num;
         String name;
-        String greet = "Hello! I am Meow. ᓚᘏᗢ\n"
+        String greet = "Hello! I am Meow.\n"
                      + "What can I do for you?\n";
         String ask = "Enter any input for me to record down\n"
                    + "or <list> to show all your recorded inputs\n"
                    + "or <bye> to exit.";
-        String bye = "Bye. Hope to see you again soon with Chicken Cat Treats ᓚᘏᗢ\n";
+        String bye = "Bye. Hope to see you again soon with Chicken Cat Treats\n";
 
         System.out.println(greet);
         System.out.println(ask);
