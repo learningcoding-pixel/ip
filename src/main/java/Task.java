@@ -20,4 +20,8 @@ public class Task {
         return isDone ? "[X]" : "[ ]";
     }
 
+    public String getFormat(){
+        return "@Override";
+    }
+
 }
