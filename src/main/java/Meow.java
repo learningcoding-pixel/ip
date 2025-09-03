@@ -12,28 +12,17 @@ public class Meow {
 
     public static void main(String[] args) {
 
-        Dataloader dataloader = new Dataloader();  // Create a Scanner object
-
-
-
+        Dataloader dataloader = new Dataloader();  // Create a dataloader object
+        TaskSaver tasksaver = new TaskSaver();
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+
+
         ArrayList<Task> tasks = new ArrayList<>();
         tasks = dataloader.getTasks();
-        TaskSaver tasksaver = new TaskSaver();
 
 
-        char last;
-        int num;
-        String name;
-        String greet = "Hello! I am Meow.\n"
-                     + "What can I do for you?\n";
-        String ask = "Enter any input for me to record down\n"
-                   + "or <list> to show all your recorded inputs\n"
-                   + "or <bye> to exit.";
-        String bye = "Bye. Hope to see you again soon with Chicken Cat Treats\n";
-
-        System.out.println(greet);
-        System.out.println(ask);
+        Ui.showWelcome();
+        Ui.showAsk();
         String userInput = scanner.nextLine();  // Read user input
 
 
@@ -42,6 +31,9 @@ public class Meow {
 
         while(!userInput.equals("bye")){
 
+            char last;
+            int num;
+            String name;
 
             try {
                 Exception.checkEmptyInput(userInput);
@@ -96,15 +88,13 @@ public class Meow {
 
             tasksaver.save(tasks);
 
-
-
             System.out.println();
-            System.out.println(ask);
+            Ui.showAsk();
             userInput = scanner.nextLine();
         }
 
         scanner.close();//close scanner
-        System.out.println(bye);
+        Ui.showBye();
     }
 
 
