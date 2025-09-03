@@ -10,6 +10,12 @@ public class Event extends Deadline{
     @Override
     public String getStatus(){
         String stat=  isDone ? "[X]" : "[ ]";
-        return "[E]" + stat + name + "(Start: " + startDate + ")" + "(End:" + endDate + ")" ;
+        return "[E]" + stat + " " + name + " " + "(Start: " + startDate + ") " + "(End:" + endDate + ")" ;
+    }
+
+    @Override
+    public String getFormat(){
+        String d=  isDone ? "1" : "0";
+        return "D" + " | " + d + " | " + name + " | " + startDate + " | " + endDate;
     }
 }

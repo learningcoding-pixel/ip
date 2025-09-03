@@ -12,8 +12,16 @@ public class Meow {
 
     public static void main(String[] args) {
 
+        Dataloader dataloader = new Dataloader();  // Create a Scanner object
+
+
+
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
         ArrayList<Task> tasks = new ArrayList<>();
+        tasks = dataloader.getTasks();
+        TaskSaver tasksaver = new TaskSaver();
+
+
         char last;
         int num;
         String name;
@@ -30,11 +38,13 @@ public class Meow {
 
 
 
+
+
         while(!userInput.equals("bye")){
 
 
             try {
-                DukeException.checkEmptyInput(userInput);
+                Exception.checkEmptyInput(userInput);
                 System.out.println("You entered: " + userInput);
 
                 last = userInput.charAt(userInput.length() - 1);
@@ -80,10 +90,11 @@ public class Meow {
                 }
 
 
-            } catch (DukeException e) {
+            } catch (Exception e) {
                 System.out.println("OOPS! " + e.getMessage());
             }
 
+            tasksaver.save(tasks);
 
 
 

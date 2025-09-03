@@ -1,7 +1,7 @@
-public class DukeException extends Exception {
+public class Exception extends java.lang.Exception {
 
     // Constructor for the exception
-    public DukeException(String message) {
+    public Exception(String message) {
         super(message);
     }
 
@@ -9,9 +9,9 @@ public class DukeException extends Exception {
      * Static method to check for empty input.
      * Throws DukeException if input is empty.
      */
-    public static void checkEmptyInput(String input) throws DukeException {
+    public static void checkEmptyInput(String input) throws Exception {
         if (input == null || input.trim().isEmpty()) {
-            throw new DukeException("The input cannot be empty!");
+            throw new Exception("The input cannot be empty!");
         }
     }
 }
