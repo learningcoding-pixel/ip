@@ -1,3 +1,5 @@
+package cat;
+
 import java.io.*;
 import java.util.*;
 

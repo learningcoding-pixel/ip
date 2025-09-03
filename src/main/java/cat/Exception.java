@@ -1,3 +1,5 @@
+package cat;
+
 public class Exception extends java.lang.Exception {
 
     // Constructor for the exception

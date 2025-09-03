@@ -1,3 +1,5 @@
+package cat;
+
 public class Ui {
     public static void showWelcome() {
         System.out.println("Hello! I am Meow.\n"

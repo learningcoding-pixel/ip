@@ -1,3 +1,5 @@
+package cat;
+
 import java.util.Scanner;  // Import the Scanner class
 import java.util.ArrayList;
 

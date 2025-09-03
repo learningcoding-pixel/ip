@@ -1,3 +1,5 @@
+package cat;
+
 public class Event extends Deadline{
 
     protected String startDate;
