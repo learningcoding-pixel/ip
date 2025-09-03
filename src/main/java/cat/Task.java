@@ -1,3 +1,5 @@
+package cat;
+
 public class Task {
 
     protected String name;
