@@ -12,7 +12,6 @@ public class Todo extends Task {
         return "[T]" + stat + " " + name;
     }
 
-
     @Override
     public String getFormat(){
         String d=  isDone ? "1" : "0";

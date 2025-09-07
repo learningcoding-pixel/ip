@@ -16,14 +16,9 @@ public class Deadline extends Todo{
         DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
         LocalDateTime localdatetime = LocalDateTime.parse(endDate, inputFormatter);
 
-        // Define output format, e.g., Dec 02 2019 18:00
-        //DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
-
         this.endDate = localdatetime;
 
-
     }
-
 
     @Override
     public String getStatus(){
