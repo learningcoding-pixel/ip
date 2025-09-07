@@ -18,18 +18,12 @@ public class Meow {
         TaskSaver tasksaver = new TaskSaver();
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
 
-
         ArrayList<Task> tasks = new ArrayList<>();
         tasks = dataloader.getTasks();
-
 
         Ui.showWelcome();
         Ui.showAsk();
         String userInput = scanner.nextLine();  // Read user input
-
-
-
-
 
         while(!userInput.equals("bye")){
 
