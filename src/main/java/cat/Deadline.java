@@ -28,6 +28,7 @@ public class Deadline extends Todo{
         LocalDateTime localdatetime = LocalDateTime.parse(endDate, inputFormatter);
 
         this.endDate = localdatetime;
+
     }
 
     /**
@@ -37,6 +38,7 @@ public class Deadline extends Todo{
      *
      * @return A string representing the task's completion status and end date.
      */
+
     @Override
     public String getStatus(){
         String stat=  isDone ? "[X]" : "[ ]";

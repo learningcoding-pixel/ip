@@ -23,13 +23,10 @@ public class Dataloader {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    //data.add(line);
 
                     // Split by the pipe character "|"
                     String[] parts = line.split("\\|");
                     String name = parts[2].trim();
-
-
 
                     switch (line.charAt(0)) {
                         case 'T' -> {
