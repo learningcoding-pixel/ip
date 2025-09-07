@@ -11,6 +11,18 @@ public class Meow {
         }
     }
 
+    public static void find(ArrayList<Task> tasks, String keyword) {
+
+        int counter = 0;
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).name.contains(keyword)){
+                counter++;
+                System.out.println((counter) + ". " + tasks.get(i).getStatus());
+            }
+
+        }
+    }
+
 
     public static void main(String[] args) {
 
@@ -62,16 +74,19 @@ public class Meow {
                     Deadline deadline = new Deadline(name, endDate);
                     tasks.add(deadline);
                     printAll(tasks);
-                } else if(userInput.contains("event")){
+                } else if(userInput.contains("event")) {
                     int index = userInput.indexOf('/');
                     int lastIndex = userInput.lastIndexOf('/');
-                    name =  userInput.substring(5,index);
-                    String startDate = userInput.substring(index + 1,lastIndex);
+                    name = userInput.substring(5, index);
+                    String startDate = userInput.substring(index + 1, lastIndex);
                     String endDate = userInput.substring(lastIndex + 1);
-                    Event event = new Event(name,startDate,endDate);
+                    Event event = new Event(name, startDate, endDate);
                     tasks.add(event);
                     printAll(tasks);
-                }else{
+                }else if(userInput.contains("find")) {
+                    String keyword = userInput.substring(4).trim();
+                    find(tasks,keyword);
+                } else{
                     System.out.println("Recorded: " + userInput);
                     Task task = new Task(userInput);
                     tasks.add(task);
