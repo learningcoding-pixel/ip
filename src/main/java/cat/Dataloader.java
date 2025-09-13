@@ -51,12 +51,12 @@ public class Dataloader {
                     }
 
                 }
-                System.out.println("Data loaded successfully from " + DATA_FILE);
+                //System.out.println("Data loaded successfully from " + DATA_FILE);
             } catch (IOException e) {
-                System.err.println("Error reading file: " + e.getMessage());
+                //System.err.println("Error reading file: " + e.getMessage());
             }
         } else {
-            System.out.println("File not found: " + DATA_FILE);
+            //System.out.println("File not found: " + DATA_FILE);
         }
     }
 
