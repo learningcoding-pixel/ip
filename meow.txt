@@ -1,1 +1,1 @@
-T | 0 | help feed cat
+T | 1 | love cat
