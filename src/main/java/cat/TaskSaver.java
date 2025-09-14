@@ -26,7 +26,7 @@ public class TaskSaver {
                 writer.write(t.getFormat());
                 writer.write("\n");
             }
-            System.out.println("Tasks saved to " + fileName);
+            //System.out.println("Tasks saved to " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
