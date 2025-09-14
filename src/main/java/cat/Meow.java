@@ -43,7 +43,8 @@ public class Meow {
         TaskSaver tasksaver = new TaskSaver();
         tasks = dataloader.getTasks();
         //output += Ui.showWelcome();
-        if (!userInput.equals("bye")){
+
+        if (!userInput.equals("bye") && !userInput.trim().isEmpty()) {
             output += Parser.analyse(userInput);
         }
         tasksaver.save(tasks);

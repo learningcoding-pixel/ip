@@ -7,6 +7,7 @@ public class Parser {
         try {
             String output = "";
 
+            assert userInput != null : "User input cannot be null";
             Exception.checkEmptyInput(userInput);
             output += Ui.showInput(userInput);
 
