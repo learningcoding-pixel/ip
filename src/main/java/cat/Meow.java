@@ -1,6 +1,7 @@
 package cat;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Meow {
 
@@ -22,14 +23,13 @@ public class Meow {
         StringBuilder sb = new StringBuilder();
         int counter = 0;
 
-        for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).name.contains(keyword)) {
-                counter++;
-                sb.append(counter)
-                        .append(". ")
-                        .append(tasks.get(i).getStatus())
-                        .append("\n");
-            }
+        List<String> matchedTasks = tasks.stream()
+                .filter(task -> task.name.contains(keyword))
+                .map(Task::getStatus)
+                .toList(); // Java 16+; use collect(Collectors.toList()) if older Java
+
+        for (int i = 0; i < matchedTasks.size(); i++) {
+            sb.append(i + 1).append(". ").append(matchedTasks.get(i)).append("\n");
         }
         return sb.toString();
     }
