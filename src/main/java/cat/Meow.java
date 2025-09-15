@@ -6,8 +6,6 @@ public class Meow {
 
     public static ArrayList<Task> tasks = new ArrayList<>();
 
-    //private static ArrayList<Task> tasks = new ArrayList<>();
-
     public static String printAll() {
         StringBuilder sb = new StringBuilder();
 
@@ -42,7 +40,6 @@ public class Meow {
         Dataloader dataloader = new Dataloader();  // Create a dataloader object
         TaskSaver tasksaver = new TaskSaver();
         tasks = dataloader.getTasks();
-        //output += Ui.showWelcome();
 
         if (!userInput.equals("bye") && !userInput.trim().isEmpty()) {
             output += Parser.analyse(userInput);
