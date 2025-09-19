@@ -1,4 +1,4 @@
 T | 1 | love cat
-T | 0 | feed cat
+T | 1 | feed cat
 T | 0 | read book
 T | 0 | feed myself

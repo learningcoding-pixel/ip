@@ -11,8 +11,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import javafx.scene.image.Image;
-
 import javafx.scene.layout.Region;
+
 
 
 
@@ -28,6 +28,9 @@ public class Main extends Application {
     private Image meowImage = new Image(this.getClass().getResourceAsStream("/images/miao.png"));
     private Meow meow = new Meow();
 
+
+
+
     @Override
     public void start(Stage stage) {
         //Setting up required components
@@ -37,7 +40,8 @@ public class Main extends Application {
         scrollPane.setContent(dialogContainer);
 
         userInput = new TextField();
-        sendButton = new Button("Send");
+        sendButton = new Button("\uD83D\uDC08"); // Cat emoji
+        sendButton.setStyle("-fx-background-color: orange; -fx-text-fill: black;");// orange button with black text/emoji
 
 //        //DialogBox dialogBox = new DialogBox("Enter input", meowImage);
 //        DialogBox.getDukeDialog("Enter input", meowImage)
@@ -54,7 +58,9 @@ public class Main extends Application {
         //More code to be added here later
         //Formatting the window to look as expected
 
-        stage.setTitle("Cat");
+        stage.setTitle("\uD83D\uDE3B Cat \uD83D\uDE3D");
+        //stage.setTitle("Cat");
+
         stage.setResizable(false);
         stage.setMinHeight(600.0);
         stage.setMinWidth(400.0);
