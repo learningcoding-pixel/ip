@@ -28,6 +28,23 @@ public class DialogBox extends HBox {
 
         this.getChildren().addAll(text, displayPicture);
     }
+
+    public DialogBox(String s, Image i, int temp) {
+        text = new Label(s);
+        displayPicture = new ImageView(i);
+
+        //Styling the dialog box
+        text.setWrapText(true);
+        displayPicture.setFitWidth(50);
+        displayPicture.setFitHeight(50);
+        this.setAlignment(Pos.TOP_RIGHT);
+
+        this.getChildren().addAll(text, displayPicture);
+    }
+
+
+
+
     /**
      * Flips the dialog box such that the ImageView is on the left and text on the right.
      */
@@ -38,10 +55,10 @@ public class DialogBox extends HBox {
         this.getChildren().setAll(tmp);
     }
 
-    public static DialogBox getUserDialog(String s, Image i) {
-        return new DialogBox(s, i);
-    }
 
+    public static DialogBox getUserDialog(String s, Image i, int temp) {
+        return new DialogBox(s, i,temp);
+    }
     public static DialogBox getMeowDialog(String s, Image i) {
         var db = new DialogBox(s, i);
         db.flip();

@@ -96,10 +96,10 @@ public class Main extends Application {
 
     private void handleUserInput() {
         String userText = userInput.getText();
-        String dukeText = meow.main(userInput.getText());
+        String meowText = meow.main(userInput.getText());
         dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(userText, userImage),
-                DialogBox.getMeowDialog(dukeText, meowImage)
+                DialogBox.getUserDialog(userText,userImage, 1),
+                DialogBox.getMeowDialog(meowText, meowImage)
         );
         userInput.clear();
     }
