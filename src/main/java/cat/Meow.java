@@ -21,7 +21,6 @@ public class Meow {
 
     public static String find(String keyword) {
         StringBuilder sb = new StringBuilder();
-        int counter = 0;
 
         List<String> matchedTasks = tasks.stream()
                 .filter(task -> task.name.contains(keyword))
@@ -31,7 +30,12 @@ public class Meow {
         for (int i = 0; i < matchedTasks.size(); i++) {
             sb.append(i + 1).append(". ").append(matchedTasks.get(i)).append("\n");
         }
-        return sb.toString();
+
+        if (matchedTasks.isEmpty()){
+            return "Tasks with " + keyword + " does not exist.\n";
+        }else{
+            return sb.toString();
+        }
     }
 
 
@@ -41,7 +45,7 @@ public class Meow {
         TaskSaver tasksaver = new TaskSaver();
         tasks = dataloader.getTasks();
 
-        if (!userInput.equals("bye") && !userInput.trim().isEmpty()) {
+        if (!userInput.trim().isEmpty()) {
             output += Parser.analyse(userInput);
         }
         tasksaver.save(tasks);

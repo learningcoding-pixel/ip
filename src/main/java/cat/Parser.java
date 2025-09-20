@@ -9,7 +9,7 @@ public class Parser {
 
             assert userInput != null : "User input cannot be null";
             Exception.checkEmptyInput(userInput);
-            output += Ui.showInput(userInput);
+            //output += Ui.showInput(userInput);
 
             int last = userInput.charAt(userInput.length() - 1);
             int num = last - '0';
@@ -18,7 +18,10 @@ public class Parser {
 
             if (userInput.equals("list")) {
                 output += Meow.printAll();
-            }else if(userInput.contains("unmark")) {
+            } else if (userInput.equals("bye")) {
+                output += Ui.showBye();
+            }
+            else if(userInput.contains("unmark")) {
                 Meow.tasks.get(num - 1).setUnDone();
                 output += Meow.printAll();
             }else if(userInput.contains("mark")) {
@@ -49,10 +52,7 @@ public class Parser {
                 String keyword = userInput.substring(4).trim();
                 output += Meow.find(keyword);
             } else{
-                System.out.println("Recorded: " + userInput);
-                Task task = new Task(userInput);
-                Meow.tasks.add(task);
-                output += Meow.printAll();
+                output += Ui.inValidInput();
             }
 
             return output;
