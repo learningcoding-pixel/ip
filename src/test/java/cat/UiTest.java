@@ -22,22 +22,33 @@ class UiTest {
 
     @Test
     void testShowWelcome() {
-        Ui.showWelcome();
-        String expected = "Hello! I am Meow.\nWhat can I do for you?\n";
-        assertEquals(expected, outContent.toString());
+        String actual = Ui.showWelcome();
+        String expected = "Hello! I am your neighbourhood stray cat.\n"
+                        + "What can I do for you?\n";
+        assertEquals(expected, actual);
     }
 
     @Test
     void testShowAsk() {
-        Ui.showAsk();
-        String expected = "Enter any input for me to record down\nor <list> to show all your recorded inputs\nor <bye> to exit.";
-        assertEquals(expected, outContent.toString().trim());
+        String actual = Ui.showAsk();
+        String expected = "Enter your meows for me to record down\n"
+                + "or <list> to show all your recorded inputs\n"
+                + "or <bye> to exit.";
+        assertEquals(expected, actual);
     }
 
     @Test
     void testShowBye() {
-        Ui.showBye();
+        String actual = Ui.showBye();
         String expected = "Bye. Hope to see you again soon with Chicken Cat Treats\n";
-        assertEquals(expected, outContent.toString());
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testShowInput() {
+        String input = "hello";
+        String expected = "You have Meowed: hello\n";
+        String actual = Ui.showInput(input);
+        assertEquals(expected, actual);
     }
 }
