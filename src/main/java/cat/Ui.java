@@ -9,6 +9,7 @@ public class Ui {
     public static String showAsk() {
         return "Enter your meows for me to record down\n"
                 + "or <list> to show all your recorded inputs\n"
+                + "or <find><inputkey> to find Tasks with inputkey \n"
                 + "or <bye> to exit.";
     }
 
@@ -19,5 +20,10 @@ public class Ui {
     public static String showInput(String userInput){
         return "You have Meowed: " + userInput + "\n";
     }
+
+    public static String inValidInput(){
+        return "Invalid Input\n";
+    }
+
 
 }
