@@ -44,13 +44,9 @@ public class Meow {
         Dataloader dataloader = new Dataloader();  // Create a dataloader object
         TaskSaver tasksaver = new TaskSaver();
         tasks = dataloader.getTasks();
-
-        if (!userInput.trim().isEmpty()) {
-            output += Parser.analyse(userInput);
-        }
+        output += Parser.analyse(userInput);
         tasksaver.save(tasks);
-
-        output += Ui.showAsk();
+        //output += Ui.showAsk();
         return output;
     }
 

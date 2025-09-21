@@ -1,5 +1,8 @@
 package cat;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Represents an Event task, which is a type of Deadline with a specific start and end date.
  * Inherits from the Deadline class.
@@ -7,7 +10,9 @@ package cat;
 public class Event extends Deadline{
 
     /** The start date of the event as a string. */
-    protected String startDate;
+    //protected String startDate;
+
+    protected LocalDateTime startDate; // converted date-time object
 
 
     /**
@@ -19,7 +24,11 @@ public class Event extends Deadline{
      */
     public Event(String name, String startDate, String endDate){
         super(name,endDate);
-        this.startDate = startDate;
+//        this.startDate = startDate;
+
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");//
+        LocalDateTime startdatetime = LocalDateTime.parse(startDate, inputFormatter);//
+        this.startDate = startdatetime;
     }
 
 
@@ -33,8 +42,21 @@ public class Event extends Deadline{
     @Override
     public String getStatus(){
         String stat=  isDone ? "[X]" : "[ ]";
-        return "[E]" + stat + " " + name + " " + "(Start: " + startDate + ") " + "(End:" + endDate + ")" ;
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
+        return "[E]" + stat + " " + name + " " + "(Start: " + startDate.format(outputFormatter) + ") " + "(End: " + endDate.format(outputFormatter) + ")" ;
     }
+
+//    public String getStatus(){
+//        String stat=  isDone ? "[X]" : "[ ]";
+//        return "[E]" + stat + " " + name + " " + "(Start: " + startDate + ") " + "(End:" + endDate + ")" ;
+//    }
+//
+//
+//    public String getStatus(){
+//        String stat=  isDone ? "[X]" : "[ ]";
+//        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
+//        return "[D]" + stat + " " + name + " " + endDate.format(outputFormatter);
+//    }
 
     /**
      * Returns a formatted string for storing or saving the Event task.
@@ -46,6 +68,10 @@ public class Event extends Deadline{
     @Override
     public String getFormat(){
         String d=  isDone ? "1" : "0";
-        return "D" + " | " + d + " | " + name + " | " + startDate + " | " + endDate;
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
+
+        return "E" + " | " + d + " | " + name + " | " + startDate.format(outputFormatter) + " | " + endDate.format(outputFormatter);
+        //return "D" + " | " + d + " | " + name + " | " + startDate + " | " + endDate;
+
     }
 }

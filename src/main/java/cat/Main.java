@@ -63,11 +63,11 @@ public class Main extends Application {
 
         stage.setResizable(false);
         stage.setMinHeight(600.0);
-        stage.setMinWidth(400.0);
+        stage.setMinWidth(400.0);//400
 
-        mainLayout.setPrefSize(400.0, 600.0);
+        mainLayout.setPrefSize(400, 600.0);//400, 600
 
-        scrollPane.setPrefSize(385, 535);
+        scrollPane.setPrefSize(385, 535);// 385, 535
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
@@ -76,9 +76,9 @@ public class Main extends Application {
 
         dialogContainer.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
-        userInput.setPrefWidth(325.0);
+        userInput.setPrefWidth(325.0);//325
 
-        sendButton.setPrefWidth(55.0);
+        sendButton.setPrefWidth(55.0);// 55.0
 
         AnchorPane.setTopAnchor(scrollPane, 1.0);
 
@@ -87,6 +87,10 @@ public class Main extends Application {
 
         AnchorPane.setLeftAnchor(userInput, 1.0);
         AnchorPane.setBottomAnchor(userInput, 1.0);
+
+        dialogContainer.getChildren().add(
+                DialogBox.getMeowDialog(Ui.showWelcome() + Ui.showAsk(), meowImage)
+        );
 
         //More code to be added here later
         sendButton.setOnMouseClicked((event) -> {
@@ -99,6 +103,8 @@ public class Main extends Application {
         //Scroll down to the end every time dialogContainer's height changes.
         dialogContainer.heightProperty().addListener((observable) -> scrollPane.setVvalue(1.0));
     }
+
+
 
     private void handleUserInput() {
         String userText = userInput.getText();

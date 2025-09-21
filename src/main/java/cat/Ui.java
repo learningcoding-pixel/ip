@@ -7,11 +7,18 @@ public class Ui {
     }
 
     public static String showAsk() {
-        return "Enter your meows for me to record down\n"
-                + "or <list> to show all your recorded inputs\n"
-                + "or <find><inputkey> to find Tasks with inputkey \n"
-                + "or <bye> to exit.";
+        return "Enter your meows to record down as shown: \n"
+                + "<t> | <todo>\n"
+                + "<d> | <deadline> | <2/12/2019 1800>\n"
+                + "<e> | <event> | <1/12/2019 1800> | <2/12/2019 1800>\n"
+                + "<list>\n"
+                + "<find> | <key>\n"
+                + "<delete> | <index>\n"
+                + "<mark> | <index>\n"
+                + "<unmark> | <index>\n"
+                + "<bye>\n";
     }
+
 
     public static String showBye() {
         return "Bye. Hope to see you again soon with Chicken Cat Treats\n";
@@ -23,6 +30,10 @@ public class Ui {
 
     public static String inValidInput(){
         return "Invalid Input\n";
+    }
+
+    public static String emptyInput(){
+        return "empty Input\n";
     }
 
 

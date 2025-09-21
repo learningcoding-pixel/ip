@@ -9,42 +9,44 @@ public class Parser {
 
             assert userInput != null : "User input cannot be null";
             Exception.checkEmptyInput(userInput);
-            //output += Ui.showInput(userInput);
 
             int last = userInput.charAt(userInput.length() - 1);
             int num = last - '0';
 
-            String[] parts = userInput.split("/");
+            //String[] parts = userInput.split("/");
+            String[] parts = userInput.split("\\|");
 
-            if (userInput.equals("list")) {
+            parts[0] = parts[0].trim().toLowerCase();
+
+
+            if (parts[0].equals("list")) {
                 output += Meow.printAll();
-            } else if (userInput.equals("bye")) {
+            } else if (parts[0].equals("bye")) {
                 output += Ui.showBye();
-            }
-            else if(userInput.contains("unmark")) {
+            } else if(parts[0].equals("unmark")) {
                 Meow.tasks.get(num - 1).setUnDone();
                 output += Meow.printAll();
-            }else if(userInput.contains("mark")) {
+            }else if(parts[0].equals("mark")) {
                 Meow.tasks.get(num - 1).setDone();
                 output += Meow.printAll();
-            }else if(userInput.contains("delete")){
+            }else if(parts[0].equals("delete")){
                 Meow.tasks.remove(num - 1);
                 output += Meow.printAll();
-            }else if(userInput.contains("todo")) {
-                String name = userInput.substring(4).trim();
+            }else if(parts[0].equals("t")) {
+                String name = parts[1].trim();
                 Todo todo = new Todo(name);
                 Meow.tasks.add(todo);
                 output += Meow.printAll();
-            }else if(userInput.contains("deadline")) {
-                String name = parts[0].substring(8).trim();
-                String endDate = parts[1].trim();
+            }else if(parts[0].equals("d")) {
+                String name = parts[1].trim();
+                String endDate = parts[2].trim();
                 Deadline deadline = new Deadline(name, endDate);
                 Meow.tasks.add(deadline);
                 output += Meow.printAll();
-            } else if(userInput.contains("event")) {
-                String name = parts[0].substring(5).trim();
-                String startDate = parts[1].trim();
-                String endDate = parts[2].trim();
+            } else if(parts[0].equals("e")) {
+                String name = parts[1].trim();
+                String startDate = parts[2].trim();
+                String endDate = parts[3].trim();
                 Event event = new Event(name, startDate, endDate);
                 Meow.tasks.add(event);
                 output += Meow.printAll();
@@ -53,6 +55,7 @@ public class Parser {
                 output += Meow.find(keyword);
             } else{
                 output += Ui.inValidInput();
+                output += Ui.showAsk();
             }
 
             return output;

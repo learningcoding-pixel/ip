@@ -1,4 +1,5 @@
 T | 1 | love cat
-T | 1 | feed cat
-T | 0 | read book
-T | 1 | feed myself
+D | 0 | register cat | 21/9/2025 1300
+D | 1 | airplane | 2/12/2019 1800
+D | 0 | shenzhen | 1/12/2019 1800
+E | 0 | shenzhen | 1/12/2019 1800 | 2/12/2019 1900
