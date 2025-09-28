@@ -43,10 +43,6 @@ public class Main extends Application {
         sendButton = new Button("\uD83D\uDC08"); // Cat emoji
         sendButton.setStyle("-fx-background-color: orange; -fx-text-fill: black;");// orange button with black text/emoji
 
-//        //DialogBox dialogBox = new DialogBox("Enter input", meowImage);
-//        DialogBox.getDukeDialog("Enter input", meowImage)
-//        dialogContainer.getChildren().addAll(dialogBox);
-
         AnchorPane mainLayout = new AnchorPane();
         mainLayout.getChildren().addAll(scrollPane, userInput, sendButton);
 
@@ -58,16 +54,16 @@ public class Main extends Application {
         //More code to be added here later
         //Formatting the window to look as expected
 
-        stage.setTitle("\uD83D\uDE3B Cat \uD83D\uDE3D");
+        stage.setTitle("Cat");
         //stage.setTitle("Cat");
 
         stage.setResizable(false);
         stage.setMinHeight(600.0);
-        stage.setMinWidth(400.0);//400
+        stage.setMinWidth(600.0);//400
 
-        mainLayout.setPrefSize(400, 600.0);//400, 600
+        mainLayout.setPrefSize(400, 600);//400, 600
 
-        scrollPane.setPrefSize(385, 535);// 385, 535
+        scrollPane.setPrefSize(585, 535);// 385, 535
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
@@ -76,7 +72,7 @@ public class Main extends Application {
 
         dialogContainer.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
-        userInput.setPrefWidth(325.0);//325
+        userInput.setPrefWidth(525.0);//325
 
         sendButton.setPrefWidth(55.0);// 55.0
 

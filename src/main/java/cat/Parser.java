@@ -1,8 +1,25 @@
 package cat;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public class Parser {
 
+    public static boolean isValidDate(String dateStr, String pattern) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+        try {
+            LocalDate.parse(dateStr, formatter);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+
     public static String analyse(String userInput){
+
+        String pattern = "d/M/yyyy HHmm";
 
         try {
             String output = "";
@@ -40,18 +57,28 @@ public class Parser {
             }else if(parts[0].equals("d")) {
                 String name = parts[1].trim();
                 String endDate = parts[2].trim();
-                Deadline deadline = new Deadline(name, endDate);
-                Meow.tasks.add(deadline);
-                output += Meow.printAll();
+                if (isValidDate(endDate, pattern)){
+                    Deadline deadline = new Deadline(name, endDate);
+                    Meow.tasks.add(deadline);
+                    output += Meow.printAll();
+                }else{
+                    output += "Wrong date format";
+                }
+
             } else if(parts[0].equals("e")) {
                 String name = parts[1].trim();
                 String startDate = parts[2].trim();
                 String endDate = parts[3].trim();
-                Event event = new Event(name, startDate, endDate);
-                Meow.tasks.add(event);
-                output += Meow.printAll();
-            }else if(userInput.contains("find")) {
-                String keyword = userInput.substring(4).trim();
+                if (isValidDate(startDate, pattern) && isValidDate(endDate, pattern)){
+                    Event event = new Event(name, startDate, endDate);
+                    Meow.tasks.add(event);
+                    output += Meow.printAll();
+                }else{
+                    output += "Wrong date format";
+                }
+
+            }else if(parts[0].equals("find")) {
+                String keyword = parts[1].trim();
                 output += Meow.find(keyword);
             } else{
                 output += Ui.inValidInput();
